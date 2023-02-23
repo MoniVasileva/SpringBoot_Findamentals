@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="~{/fragments/head}">
+<body>
+
+<div>
+    <nav th:replace="~{/fragments/navbar}"></nav>
+</div>
+<div class="row">
+    <div class="col-md-2"></div>
+    <main class="jumbotron text-center rounded col-md-8 align-self-center">
+        <div class="justify-content-center">
+            <h1>Add Company</h1>
+        </div>
+
+        <form
+                th:method="PATCH"
+                th:action="@{/companies/add}"
+                th:object="${companyAddModel}"
+                class="m-md-auto w-50 text-center">
+
+            <div class="form-group">
+                <label for="name">Name</label>
+
+                <input th:value="*{name}"
+                        type="text"
+                       class="form-control text-center"
+                       id="name"
+                       aria-describedby="nameHelp"
+                       name="name"/>
+                <small th:if="${#fields.hasErrors('name')}" >Error message</small>
+            </div>
+
+            <div class="form-group">
+                <label for="town">Town</label>
+
+                <input th:value="*{town}"
+                        type="text"
+                       class="form-control text-center"
+                       id="town"
+                       aria-describedby="town"
+                       name="town"/>
+                <small th:if="${#fields.hasErrors('town')}"  >Error message</small>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description</label>
+
+                <input th:value="*{description}"
+                        type="text"
+                       class="form-control text-center"
+                       id="description"
+                       aria-describedby="description"
+                       name="description"/>
+                <small th:if="${#fields.hasErrors('description')}"  >Error message</small>
+            </div>
+
+            <div class="form-group">
+                <label for="budget">Budget</label>
+
+                <input th:value="*{busget}"
+                        type="number"
+                       min="0"
+                       class="form-control text-center"
+                       id="budget"
+                       aria-describedby="town"
+                       name="town"/>
+                <small th:if="${#fields.hasErrors('budget')}" >Budget</small>
+            </div>
+
+            <button type="submit" class="btn btn-secondary">Add Company</button>
+        </form>
+    </main>
+</div>
+<head th:replace="~{/fragments/footer.html}">
+
+</body>
+</html>
